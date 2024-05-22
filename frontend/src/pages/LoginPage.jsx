@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-import { View, TextInput, Text } from "react-native";
+import { View, TextInput } from "react-native";
+import { Link, useNavigate } from "react-router-native";
 import HeaderImage from "../components/HeaderImage";
 import ButtonAccess from "../components/ButtonAccess";
 
@@ -28,7 +29,6 @@ const LoginPage = () => {
                 <ButtonAccess>Iniciar Sesión</ButtonAccess>
                 </View>
             </View>
-            <Text className="absolute bottom-4 text-white">© EarnMoney. Todos los derechos reservados</Text>
         </>
     )
 }

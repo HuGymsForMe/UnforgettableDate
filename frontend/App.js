@@ -2,7 +2,7 @@ import React from "react";
 
 import { ScrollView, StyleSheet } from "react-native";
 
-import { NativeRouter, Route, Switch } from "react-router-native";
+import { NativeRouter, Route, Routes } from "react-router-native";
 
 /* PESTAÑAS DE LA APLICACIÓN */
 import LoginPage from "./src/pages/LoginPage";
@@ -14,16 +14,16 @@ import UpdateTaskPage from "./src/pages/UpdateTaskPage";
 
 function App() {
   return(
+      // <ScrollView style={styles.scrollView}>
+      //   <LoginPage />
+      // </ScrollView>
     <ScrollView style={styles.scrollView}>
       <NativeRouter>
-        <Switch>
-          <Route exact path="/" component={LoginPage}/>
-          <Route exact path="/register" component={RegisterPage} />
-          <Route exact path="/home" component={HomePage} />
-          <Route exact path="/update-task" component={UpdateTaskPage} />
-          <Route exact path="/add-task" component={AddTaskPage} />
-          <Route exact path="/show-task" component={ShowTasksPage} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<LoginPage />}/>
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/home" element={<HomePage />} />
+        </Routes>
       </NativeRouter>
     </ScrollView>
   )

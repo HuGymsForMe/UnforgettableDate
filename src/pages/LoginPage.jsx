@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { View, TextInput } from "react-native";
+import { View, TextInput, Text } from "react-native";
 import HeaderImage from "../components/HeaderImage";
 import ButtonAccess from "../components/ButtonAccess";
 
@@ -10,7 +10,7 @@ const LoginPage = () => {
     [passwordInput, setPasswordInput] = useState("");
 
     return(
-        <View className="bg-[#4c70b9] flex justify-center items-center min-h-full">
+        <>
             <HeaderImage />
             <View className="flex flex-col gap-6 w-full justify-center items-center">
                 <TextInput
@@ -29,7 +29,7 @@ const LoginPage = () => {
                 </View>
             </View>
             <Text className="absolute bottom-4 text-white">© EarnMoney. Todos los derechos reservados</Text>
-        </View>
+        </>
     )
 }
 

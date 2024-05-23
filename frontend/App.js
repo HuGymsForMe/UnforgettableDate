@@ -1,6 +1,6 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet, View, Text, StatusBar } from "react-native";
 
 import { NativeRouter, Route, Routes } from "react-router-native";
 
@@ -11,13 +11,27 @@ import ShowTasksPage from "./src/pages/ShowTasksPage";
 import AddTaskPage from "./src/pages/AddTaskPage";
 import RegisterPage from "./src/pages/RegisterPage";
 import UpdateTaskPage from "./src/pages/UpdateTaskPage";
+import LoadingPage from "./src/pages/LoadingPage";
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+      const timer = setTimeout(() => {
+          setIsLoading(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+      return <LoadingPage />;
+  }
+
   return(
-      // <ScrollView style={styles.scrollView}>
-      //   <LoginPage />
-      // </ScrollView>
-    <ScrollView style={styles.scrollView}>
+    <>
+    <StatusBar backgroundColor={'black'} />
+    <View className="w-full flex justify-center items-center min-h-full bg-[#4866d3]">
       <NativeRouter>
         <Routes>
           <Route path="/" element={<LoginPage />}/>
@@ -25,14 +39,9 @@ function App() {
           <Route path="/home" element={<HomePage />} />
         </Routes>
       </NativeRouter>
-    </ScrollView>
+    </View>
+    </>
   )
 }
 
 export default App;
-
-const styles = StyleSheet.create({
-  scrollView:{
-    backgroundColor: "#4c70b9",
-  }
-})

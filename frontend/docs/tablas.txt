@@ -1,0 +1,15 @@
+TABLA DE USUARIO
+    - Nombre de Usuario (único)
+    - Correo Electrónico (único)
+    - Contraseña
+    - Edad
+
+TABLA DE TAREAS
+    - Título
+    - Categoría
+    - Fecha
+    - Hora
+    - Notificación (posibilidad)
+
+TABLA DE CATEGORÍAS
+    - Categoría

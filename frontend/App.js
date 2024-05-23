@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 import { ScrollView, StyleSheet, View, Text, StatusBar } from "react-native";
 
+import { SafeAreaProvider } from "react-native-safe-area-context";
+
 import { NativeRouter, Route, Routes } from "react-router-native";
 
 /* PESTAÑAS DE LA APLICACIÓN */
@@ -31,15 +33,17 @@ function App() {
   return(
     <>
     <StatusBar backgroundColor={'black'} />
-    <View className="w-full flex justify-center items-center min-h-full bg-[#4866d3]">
-      <NativeRouter>
-        <Routes>
-          <Route path="/" element={<LoginPage />}/>
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/home" element={<HomePage />} />
-        </Routes>
-      </NativeRouter>
-    </View>
+    <SafeAreaProvider>
+        <NativeRouter>
+          <Routes>
+            <Route path="/" element={<LoginPage />}/>
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/show-tasks" element={<ShowTasksPage />} />
+            <Route path="/add-task" element={<AddTaskPage />} />
+          </Routes>
+        </NativeRouter>
+    </SafeAreaProvider>
     </>
   )
 }

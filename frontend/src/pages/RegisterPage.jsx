@@ -1,5 +1,4 @@
 import { View, TextInput, TouchableHighlight, Text, ScrollView } from "react-native";
-import { Appbar } from "react-native-paper";
 import { useNavigate } from "react-router-native";
 
 import { Formik } from "formik";
@@ -11,8 +10,9 @@ const RegisterPage = () => {
 
     /******* VALIDAMOS EL FORMULARIO DE REGISTRO *******/
     const onSubmit = (values) => {
-        console.log(values)
+        console.log(values);
     }  
+ 
 
     const navigate = useNavigate();
 

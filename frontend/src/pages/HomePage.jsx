@@ -29,7 +29,7 @@ const HomePage = () => {
             <HeaderReturns onNavigate={navigateLogin} />
             <View className="bg-[#4866d3] flex items-center h-full">
                 <HeaderImage />
-                <Image className="h-[80px] w-[80px] mb-4" source={require('../../assets/usuario.png')} />
+                <Image className="h-[80px] w-[80px] mb-4 mt-4" source={require('../../assets/usuario.png')} />
                 <Text className="text-xl text-white mb-8">Bienvenido, {name}</Text>
                 <View className="flex w-full justify-center items-center gap-4">
                     <Button className="w-[80%] my-2 py-1 rounded-xl bg-[#648940] border-2 border-slate-500">

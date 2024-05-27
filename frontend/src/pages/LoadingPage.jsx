@@ -2,6 +2,7 @@ import { View, StyleSheet, Text } from 'react-native';
 import HeaderImage from '../components/HeaderImage';
 
 import { ActivityIndicator } from 'react-native-paper';
+import { useState } from 'react';
 
 const LoadingPage = () => {
 

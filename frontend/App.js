@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-
-import { ScrollView, StyleSheet, View, Text, StatusBar } from "react-native";
+import { StatusBar } from "react-native";
 
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import { NativeRouter, Route, Routes } from "react-router-native";
+
+import { UserProvider } from "./src/context/UserContext";
 
 /* PESTAÑAS DE LA APLICACIÓN */
 import LoginPage from "./src/pages/LoginPage";
@@ -31,20 +32,20 @@ function App() {
   }
 
   return(
-    <>
-    <StatusBar backgroundColor={'black'} />
-    <SafeAreaProvider>
-        <NativeRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage />}/>
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/show-tasks" element={<ShowTasksPage />} />
-            <Route path="/add-task" element={<AddTaskPage />} />
-          </Routes>
-        </NativeRouter>
-    </SafeAreaProvider>
-    </>
+    <UserProvider>
+      <StatusBar backgroundColor={'black'} />
+      <SafeAreaProvider>
+          <NativeRouter>
+            <Routes>
+              <Route path="/" element={<LoginPage />}/>
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/home" element={<HomePage />} />
+              <Route path="/show-tasks" element={<ShowTasksPage />} />
+              <Route path="/add-task" element={<AddTaskPage />} />
+            </Routes>
+          </NativeRouter>
+      </SafeAreaProvider>
+    </UserProvider>
   )
 }
 

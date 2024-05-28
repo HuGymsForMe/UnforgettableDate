@@ -1,15 +1,21 @@
 import { View, TextInput, Text, TouchableHighlight } from "react-native";
+import { Formik } from "formik";
+import { useNavigate } from "react-router-native";
+
+import { useAuth } from "../context/UserContext";
+
 import HeaderImage from "../components/HeaderImage";
 
-import { Formik } from "formik";
-import { Link, useNavigate } from "react-router-native";
-
-import { Button } from "react-native-paper";
+import { Button, Snackbar } from "react-native-paper";
 
 
 const LoginPage = () => {
 
+    const [errorHTTP, setErrorHTTP] = useState(false); //Comprueba si hay errores a la hora de hacer peticiones HTTP
+    const [showToast, setShowToast] = useState(false); //Hace desaparecer y aparecer el toast
+
     const navigate = useNavigate();
+    const { signin, isAuthenticated } = useAuth();
 
     const initialValues = {
         username:'',
@@ -17,11 +23,15 @@ const LoginPage = () => {
     }
     
     /******* VALIDAMOS EL FORMULARIO DE LOGEO *******/
-    const onSubmit = (values) => {
+    const onSubmit = async(values) => {
         console.log(values)
-
-        if (values.username == 'Pepe') {
-            navigate('/home');
+        if (!await signin(data)) {
+            setErrorHTTP(true);
+            setShowToast(true);
+            setTimeout(() => {
+                setShowToast(false);
+            }, 3000);
+            return;
         }
     }   
 
@@ -64,6 +74,17 @@ const LoginPage = () => {
             <Button onPress={navigateRegister}>
                 <Text className="text-white text-lg">¿Aún no te has registrado?</Text>
             </Button>
+            {showToast && errorHTTP && (<Snackbar
+        visible={showToast}
+        onDismiss={!showToast}
+        action={{
+          label: 'Undo',
+          onPress: () => {
+            // Do something
+          },
+        }}>
+        Hey there! I'm a Snackbar.
+        </Snackbar>)}
         </View>
     )
 }

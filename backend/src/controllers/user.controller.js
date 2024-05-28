@@ -1,6 +1,6 @@
-import User from "../models/user.model";
+import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
-import { createAccessToken } from "../libs/jwt";
+import { createAccessToken } from "../libs/jwt.js";
 
 
 export const register = async (req, res) => {
